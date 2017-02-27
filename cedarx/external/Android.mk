@@ -1,0 +1,263 @@
+LOCAL_PATH:= $(call my-dir)
+
+include $(LOCAL_PATH)/../config.mk
+
+MY_SDK="notdef"
+
+ifeq ($(CONF_ANDROID_VERSION), 4.2)
+MY_SDK=ajb42
+else ifeq ($(CONF_ANDROID_VERSION), 4.4)
+MY_SDK=akk44
+else ifeq ($(CONF_ANDROID_VERSION), 5.0)
+MY_SDK=alp50
+else ifeq ($(CONF_ANDROID_VERSION), 5.1)
+MY_SDK=alp50
+else ifeq ($(CONF_ANDROID_VERSION), 6.0)
+MY_SDK=amm60
+else ifeq ($(CONF_ANDROID_VERSION), 7.0)
+MY_SDK=anougat70
+else ifeq ($(CONF_ANDROID_VERSION), 7.1)
+MY_SDK=anougat70
+endif
+
+###################### audio midware and libs begin ##########################
+include $(CLEAR_VARS)
+LOCAL_MODULE := libadecoder
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libadecoder.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libadecoder_debug
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libadecoder_debug.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_rw_data_api
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_rw_data_api.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_aacdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_aacdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_alacdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_alacdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_amrdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_amrdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_mp3dec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_mp3dec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_apedec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_apedec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_dsddec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_dsddec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_flacdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_flacdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_g729dec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_g729dec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_oggdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_oggdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_wavdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_wavdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_atrcdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_atrcdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_cookdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_cookdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_radec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_radec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_siprdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_siprdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libaw_opusdec
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libaw_opusdec.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+###################### audio midware and libs end   ##########################
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := liblive555
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/liblive555.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+ifeq ($(CONF_RTP), yes)
+include $(CLEAR_VARS)
+LOCAL_MODULE := librtp
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/librtp.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+endif
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := libsubdecoder
+LOCAL_SRC_FILES := lib32/$(MY_SDK)/libsubdecoder.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 32
+include $(BUILD_PREBUILT)
+
+ifeq ($(CONF_ANDROID_VERSION), 5.0)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := liblive555
+LOCAL_SRC_FILES := lib64/$(MY_SDK)/liblive555.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 64
+include $(BUILD_PREBUILT)
+
+ifeq ($(CONF_RTP), yes)
+include $(CLEAR_VARS)
+LOCAL_MODULE := librtp
+LOCAL_SRC_FILES := lib64/$(MY_SDK)/librtp.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 64
+include $(BUILD_PREBUILT)
+endif
+
+endif
+
+ifeq ($(CONF_ANDROID_VERSION), 6.0)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := liblive555
+LOCAL_SRC_FILES := lib64/$(MY_SDK)/liblive555.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 64
+include $(BUILD_PREBUILT)
+
+ifeq ($(CONF_RTP), yes)
+include $(CLEAR_VARS)
+LOCAL_MODULE := librtp
+LOCAL_SRC_FILES := lib64/$(MY_SDK)/librtp.so
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .so
+LOCAL_MULTILIB := 64
+include $(BUILD_PREBUILT)
+endif
+
+endif
+
