@@ -214,7 +214,7 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/arm-linux-gnueabi/bin/ld
-LDFLAGS = -lcrypto -lz -L/xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabi -L/xspace/OpenSource/GitHubLinux/OrangePi_CedarX/libcedarc/library/lib32/linuxgnueabi_3.10/
+LDFLAGS = -lcrypto -lz -L/home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/external/lib32/arm-linux-gnueabi -L/home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/libcedarc/library/lib32/linuxgnueabi_3.10/
 LIBOBJS =  ${LIBOBJDIR}malloc$U.o ${LIBOBJDIR}mktime$U.o ${LIBOBJDIR}realloc$U.o ${LIBOBJDIR}strtod$U.o
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -287,7 +287,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/output
+prefix = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/output
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -347,7 +347,7 @@ xplayerdemo_LDADD = $(top_srcdir)/libcore/parser/base/libcdx_parser.la \
 			$(top_srcdir)/xplayer/libxplayer.la \
 			$(top_srcdir)/libcore/common/libcdx_common.la
 
-LOCAL_LIB = -dl  -lpthread -lz -lm -lcdc_vdecoder -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
+LOCAL_LIB = -dl -lpthread -lz -lm -lcdc_vdecoder -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
 		-lcrypto -lcdc_memory -lcdc_base -lssl
 
 all: all-am
