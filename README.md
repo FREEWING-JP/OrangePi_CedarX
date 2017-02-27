@@ -58,4 +58,34 @@ cp -rfa ${CURRENT_PATH}/OrangePi_CedarX/libcedarc/library/lib32/linuxgnueabi_3.1
   Copy specify file to OrangePi PC2.
   ```
 cp -rfa ${CURRENT_PATH}/OrangePi_CedarX/cedarx/config/t3_linux_cedarx.conf ${OrangePiPC2}/rootfs/etc/cedarx.conf
+cp -rfa ${CURRENT_PATH}/OrangePi_CedarX/cedarx/OrangePi_CedarX.sh ${OrangePiPC2}/rootfs/home/orangepi/CedarX
   ```
+
+* Prepare running envirnoment on OrangePi PC2
+
+  Login OrangePi PC with terminal, and change dirent into "/home/orangepi/CedarX", as follow:
+
+  If it's first time to do, please execute these command first:
+  ```
+sudo apt-get install -y gcc-arm-linux-gnueabi
+sudo ./usr/local/sbin/resize_rootfs.sh
+  ```
+  After then, running command:
+  ```
+cd /home/orangepi/CedarX
+sudo chmod 755 OrangePi_CedarX.sh
+sudo ./OrangePi_CedarX.sh
+  ```
+  At last, please export dynatic shared library:
+  ```
+export LD_LIBRARY_PATH=/home/orangepi/CedarX/arm-linux-gnueabi:/home/orangepi/CedarX/output/lib:/home/orangepi/CedarX/linuxgnueabi_3.10:/usr/arm-linux-gnueabi/lib/
+  ```
+
+* Running demo code
+
+  The finally, we can running demo code to test CedarX. 
+  Please follow this step:
+  ```
+  cd /home/orangepi/CedarX/output/bin
+  ./xplayerdemo
+  ``` 
