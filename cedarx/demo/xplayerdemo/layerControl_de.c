@@ -81,7 +81,38 @@ typedef struct LayerContext
     int                  fdDisplay;
     int                  nScreenWidth;
     int                  nScreenHeight;
+    int                  mPicNum;
 }LayerContext;
+
+#if (SAVE_PIC == 1)
+static void savePictureForDebug(LayerContext* lc, VideoPicture* pVideoPicture)
+{
+    lc->mPicNum ++;
+    if(lc->mPicNum == 50)
+    {
+        logd("save picture: w[%d], h[%d], pVirBuf[%p]",
+              pVideoPicture->nWidth,
+              pVideoPicture->nHeight,
+              pVideoPicture->pData0);
+
+        char path[1024] = {0};
+        sprintf(path, "/root/pic/pic%d.dat", lc->mPicNum);
+        FILE* fpStream = fopen(path, "wb+");
+        int len = (pVideoPicture->nWidth * pVideoPicture->nHeight)*3/2;
+        if(fpStream != NULL)
+        {
+            fwrite(pVideoPicture->pData0, 1, len, fpStream);
+            fclose(fpStream);
+        }
+        else
+        {
+            logd("+++ the fpStream is null when save picture");
+        }
+    }
+
+    return;
+}
+#endif
 
 //* set usage, scaling_mode, pixelFormat, buffers_geometry, buffers_count, crop
 static int setLayerBuffer(LayerContext* lc)
@@ -154,6 +185,10 @@ static int SetLayerParam(LayerContext* lc, VideoPicture* pPicture)
         //TO DO.
     }
 
+#if (SAVE_PIC == 1)
+    savePictureForDebug(lc, pPicture);
+#endif
+
     //* transform pixel format.
     switch(lc->eDisplayPixelFormat)
     {
@@ -165,12 +200,12 @@ static int SetLayerParam(LayerContext* lc, VideoPicture* pPicture)
                                     CdcMemGetPhysicAddressCpu(lc->pMemops, pPicture->pData1);
         config.info.fb.addr[2] = (unsigned long )
                                     CdcMemGetPhysicAddressCpu(lc->pMemops, pPicture->pData2);
-        config.info.fb.size[0].width     = lc->nDisplayWidth;
-        config.info.fb.size[0].height    = lc->nDisplayHeight;
-        config.info.fb.size[1].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[1].height    = lc->nDisplayHeight/2;
-        config.info.fb.size[2].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[2].height    = lc->nDisplayHeight/2;
+        config.info.fb.size[0].width     = lc->nWidth;
+        config.info.fb.size[0].height    = lc->nHeight;
+        config.info.fb.size[1].width     = lc->nWidth/2;
+        config.info.fb.size[1].height    = lc->nHeight/2;
+        config.info.fb.size[2].width     = lc->nWidth/2;
+        config.info.fb.size[2].height    = lc->nHeight/2;
         break;
 
         case PIXEL_FORMAT_YV12:
@@ -181,12 +216,12 @@ static int SetLayerParam(LayerContext* lc, VideoPicture* pPicture)
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData1);
         config.info.fb.addr[2]  = (unsigned long )
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData2);
-        config.info.fb.size[0].width     = lc->nDisplayWidth;
-        config.info.fb.size[0].height    = lc->nDisplayHeight;
-        config.info.fb.size[1].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[1].height    = lc->nDisplayHeight/2;
-        config.info.fb.size[2].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[2].height    = lc->nDisplayHeight/2;
+        config.info.fb.size[0].width     = lc->nWidth;
+        config.info.fb.size[0].height    = lc->nHeight;
+        config.info.fb.size[1].width     = lc->nWidth/2;
+        config.info.fb.size[1].height    = lc->nHeight/2;
+        config.info.fb.size[2].width     = lc->nWidth/2;
+        config.info.fb.size[2].height    = lc->nHeight/2;
         break;
 
         case PIXEL_FORMAT_NV12:
@@ -195,22 +230,22 @@ static int SetLayerParam(LayerContext* lc, VideoPicture* pPicture)
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData0);
         config.info.fb.addr[1] = (unsigned long )
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData1);
-        config.info.fb.size[0].width     = lc->nDisplayWidth;
-        config.info.fb.size[1].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[1].height    = lc->nDisplayHeight/2;
-        config.info.fb.size[2].height    = lc->nDisplayHeight/2;
+        config.info.fb.size[0].width     = lc->nWidth;
+        config.info.fb.size[1].width     = lc->nWidth/2;
+        config.info.fb.size[1].height    = lc->nHeight/2;
+        config.info.fb.size[2].height    = lc->nHeight/2;
         break;
 
         case PIXEL_FORMAT_NV21:
-        config.info.fb.format = DISP_FORMAT_YUV420_SP_UVUV;
+        config.info.fb.format = DISP_FORMAT_YUV420_SP_VUVU;        
         config.info.fb.addr[0] = (unsigned long )
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData0);
         config.info.fb.addr[1] = (unsigned long )
                                     CdcMemGetPhysicAddressCpu(lc->pMemops,pPicture->pData1);
-        config.info.fb.size[0].width     = lc->nDisplayWidth;
-        config.info.fb.size[1].width     = lc->nDisplayWidth/2;
-        config.info.fb.size[1].height    = lc->nDisplayHeight/2;
-        config.info.fb.size[2].height    = lc->nDisplayHeight/2;
+        config.info.fb.size[0].width     = lc->nWidth;
+        config.info.fb.size[1].width     = lc->nWidth/2;
+        config.info.fb.size[1].height    = lc->nHeight/2;
+        config.info.fb.size[2].height    = lc->nHeight/2;
         break;
 
         default:
@@ -370,7 +405,7 @@ static int __LayerSetDisplayPixelFormat(LayerCtrl* l, enum EPIXELFORMAT ePixelFo
     LayerContext* lc;
 
     lc = (LayerContext*)l;
-    logv("Layer set expected pixel format, format = %d", (int)ePixelFormat);
+    logd("Layer set expected pixel format, format = %d, NV12 %d, NV21 %d, YV12 %d", (int)ePixelFormat, PIXEL_FORMAT_NV12, PIXEL_FORMAT_NV21, PIXEL_FORMAT_YV12);
 
     if(ePixelFormat == PIXEL_FORMAT_NV12 ||
        ePixelFormat == PIXEL_FORMAT_NV21 ||
