@@ -136,6 +136,7 @@ static void __Release(SoundCtrl* s)
     return;
 }
 
+#if 0
 static void __SetFormat(SoundCtrl* s, unsigned int nSampleRate, unsigned int nChannelNum)
 {
     int               ret;
@@ -160,6 +161,31 @@ static void __SetFormat(SoundCtrl* s, unsigned int nSampleRate, unsigned int nCh
     return;
 }
 
+#else
+static void __SetFormat(SoundCtrl* s, CdxPlaybkCfg *cfg)
+{
+    int               ret;
+    SoundCtrlContext* sc;
+
+    sc = (SoundCtrlContext*)s;
+     
+    pthread_mutex_lock(&sc->mutex);
+
+    if(sc->eStatus != SD_STATUS_STOPPED)
+    {
+        logd("Sound device not int stop status, can not set audio params.");
+        abort();
+    }
+
+    pcm_params.samplerate = (cfg->nSamplerate < 32000) ? 44100 : cfg->nSamplerate;
+    pcm_params.channels = cfg->nChannels;
+    pcm_params.format = 1;
+
+    pthread_mutex_unlock(&sc->mutex);
+
+    return;
+}
+#endif
 
 static int __Start(SoundCtrl* s)
 {
@@ -736,7 +762,7 @@ static SoundControlOpsT mSoundControlOps =
     .getFrameCount =         __GetFrameCount,
 };
 
-SoundCtrl* SoundDeviceCreate()
+SoundCtrl* SoundDeviceCreate_Alsa()
 {
     SoundCtrlContext* s;
     logd("==   SoundDeviceInit");
