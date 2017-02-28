@@ -27,6 +27,7 @@ sudo apt-get install -y gcc-arm-linux-gnueabi
 * Compile cedarx on Host PC
 
   When we get source code of Cedarx, we should comile first, as follow:
+  Note! The "CURRENT_PATH" is path of "OrangePi_CedarX".
   ```
 cd OrangePi_Cedarx/cedarx
 ./bootstrap
