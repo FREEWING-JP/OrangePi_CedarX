@@ -87,6 +87,7 @@ static int try_open_device(SoundCtrlContext* sc, const char *device, int open_mo
     err = snd_pcm_open(&sc->alsa_handler, device, SND_PCM_STREAM_PLAYBACK,
     return err;
 #endif
+    return 0;
 }
 
 static void parse_device(char *dest, const char *src, int len)
@@ -572,8 +573,8 @@ static int __Stop(SoundCtrl* s)
 
 static int SoundDeviceStop_l(SoundCtrlContext* sc)
 {
-#ifndef ORANGEPI_DEBUG
     int err = 0;
+#ifndef ORANGEPI_DEBUG
 
     if(sc->eStatus == SD_STATUS_STOPPED)
     {
@@ -707,6 +708,8 @@ static int __Write(SoundCtrl* s, void* pData, int nDataSize)
     while (res == 0);
 
     return res < 0 ? res : res * sc->bytes_per_sample;
+#else
+    return 0;
 #endif
 }
 
