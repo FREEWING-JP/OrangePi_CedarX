@@ -98,7 +98,8 @@ am_xplayerdemo_OBJECTS = ./xplayerdemo-xplayerdemo.$(OBJEXT) \
 	./xplayerdemo-soundControl_null.$(OBJEXT) \
 	./xplayerdemo-subtitleControl_null.$(OBJEXT) \
 	./xplayerdemo-deinterlace_null.$(OBJEXT) \
-	./xplayerdemo-layerControl_de.$(OBJEXT)
+	./xplayerdemo-layerControl_de.$(OBJEXT) \
+	./xplayerdemo-soundControl_alsa.$(OBJEXT)
 xplayerdemo_OBJECTS = $(am_xplayerdemo_OBJECTS)
 xplayerdemo_DEPENDENCIES =  \
 	$(top_srcdir)/libcore/parser/base/libcdx_parser.la \
@@ -175,13 +176,13 @@ am__define_uniq_tagged_files = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/missing aclocal-1.14
+ACLOCAL = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = arm-linux-gnueabi-ar
-AUTOCONF = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/missing autoconf
-AUTOHEADER = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/missing autoheader
-AUTOMAKE = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/missing automake-1.14
+AUTOCONF = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/missing autoconf
+AUTOHEADER = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/missing autoheader
+AUTOMAKE = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/missing automake-1.14
 AWK = gawk
 CC = arm-linux-gnueabi-gcc
 CCAS = arm-linux-gnueabi-gcc
@@ -214,14 +215,14 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/arm-linux-gnueabi/bin/ld
-LDFLAGS = -lcrypto -lz -L/home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/external/lib32/arm-linux-gnueabi -L/home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/libcedarc/library/lib32/linuxgnueabi_3.10/
+LDFLAGS = -lcrypto -lz -L/xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/external/lib32/arm-linux-gnueabi -L/xspace/OpenSource/GitHubLinux/OrangePi_CedarX/libcedarc/library/lib32/linuxgnueabi_3.10/
 LIBOBJS =  ${LIBOBJDIR}malloc$U.o ${LIBOBJDIR}mktime$U.o ${LIBOBJDIR}realloc$U.o ${LIBOBJDIR}strtod$U.o
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
 LTLIBOBJS =  ${LIBOBJDIR}malloc$U.lo ${LIBOBJDIR}mktime$U.lo ${LIBOBJDIR}realloc$U.lo ${LIBOBJDIR}strtod$U.lo
-MAKEINFO = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/missing makeinfo
+MAKEINFO = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/arm-linux-gnueabi-nm -B
@@ -245,10 +246,10 @@ SET_MAKE =
 SHELL = /bin/bash
 STRIP = arm-linux-gnueabi-strip
 VERSION = VERSION
-abs_builddir = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/demo/xplayerdemo
-abs_srcdir = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/demo/xplayerdemo
-abs_top_builddir = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx
-abs_top_srcdir = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx
+abs_builddir = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/demo/xplayerdemo
+abs_srcdir = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/demo/xplayerdemo
+abs_top_builddir = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx
+abs_top_srcdir = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_CXX = g++
@@ -278,7 +279,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/cedarx/install-sh
+install_sh = ${SHELL} /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/cedarx/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -287,7 +288,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/orangepi/Tmp/Cedarx/OrangePi_Cedarx/output
+prefix = /xspace/OpenSource/GitHubLinux/OrangePi_CedarX/output
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -321,9 +322,9 @@ xplayerdemo_SOURCES = ./xplayerdemo.c \
 			./soundControl_null.c \
 			./subtitleControl_null.c \
 			./deinterlace_null.c \
-			./layerControl_de.c
+			./layerControl_de.c \
+            ./soundControl_alsa.c
 
-#./soundControl_alsa.c
 xplayerdemo_CFLAGS = $(CFLAGS_CDXG) $(LOCAL_INCLUDE)
 #xplayerdemo_CPPFLAGS = $(CPPFLAGS_CDXG)
 LOCAL_INCLUDE = -I$(top_srcdir) \
@@ -347,7 +348,7 @@ xplayerdemo_LDADD = $(top_srcdir)/libcore/parser/base/libcdx_parser.la \
 			$(top_srcdir)/xplayer/libxplayer.la \
 			$(top_srcdir)/libcore/common/libcdx_common.la
 
-LOCAL_LIB = -dl -lpthread -lz -lm -lcdc_vdecoder -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
+LOCAL_LIB = -dl -lpthread -lz -lm -lcdc_vdecoder -lasound -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
 		-lcrypto -lcdc_memory -lcdc_base -lssl
 
 all: all-am
@@ -452,6 +453,8 @@ $(DEPDIR)/$(am__dirstamp):
 	$(DEPDIR)/$(am__dirstamp)
 ./xplayerdemo-layerControl_de.$(OBJEXT): ./$(am__dirstamp) \
 	$(DEPDIR)/$(am__dirstamp)
+./xplayerdemo-soundControl_alsa.$(OBJEXT): ./$(am__dirstamp) \
+	$(DEPDIR)/$(am__dirstamp)
 
 xplayerdemo$(EXEEXT): $(xplayerdemo_OBJECTS) $(xplayerdemo_DEPENDENCIES) $(EXTRA_xplayerdemo_DEPENDENCIES) 
 	@rm -f xplayerdemo$(EXEEXT)
@@ -467,6 +470,7 @@ distclean-compile:
 include ./$(DEPDIR)/xplayerdemo-deinterlace_null.Po
 include ./$(DEPDIR)/xplayerdemo-layerControl_de.Po
 include ./$(DEPDIR)/xplayerdemo-layerControl_null.Po
+include ./$(DEPDIR)/xplayerdemo-soundControl_alsa.Po
 include ./$(DEPDIR)/xplayerdemo-soundControl_null.Po
 include ./$(DEPDIR)/xplayerdemo-subtitleControl_null.Po
 include ./$(DEPDIR)/xplayerdemo-xplayerdemo.Po
@@ -578,6 +582,20 @@ include ./$(DEPDIR)/xplayerdemo-xplayerdemo.Po
 #	$(AM_V_CC)source='./layerControl_de.c' object='./xplayerdemo-layerControl_de.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-layerControl_de.obj `if test -f './layerControl_de.c'; then $(CYGPATH_W) './layerControl_de.c'; else $(CYGPATH_W) '$(srcdir)/./layerControl_de.c'; fi`
+
+./xplayerdemo-soundControl_alsa.o: ./soundControl_alsa.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -MT ./xplayerdemo-soundControl_alsa.o -MD -MP -MF $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo -c -o ./xplayerdemo-soundControl_alsa.o `test -f './soundControl_alsa.c' || echo '$(srcdir)/'`./soundControl_alsa.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo $(DEPDIR)/xplayerdemo-soundControl_alsa.Po
+#	$(AM_V_CC)source='./soundControl_alsa.c' object='./xplayerdemo-soundControl_alsa.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-soundControl_alsa.o `test -f './soundControl_alsa.c' || echo '$(srcdir)/'`./soundControl_alsa.c
+
+./xplayerdemo-soundControl_alsa.obj: ./soundControl_alsa.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -MT ./xplayerdemo-soundControl_alsa.obj -MD -MP -MF $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo -c -o ./xplayerdemo-soundControl_alsa.obj `if test -f './soundControl_alsa.c'; then $(CYGPATH_W) './soundControl_alsa.c'; else $(CYGPATH_W) '$(srcdir)/./soundControl_alsa.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo $(DEPDIR)/xplayerdemo-soundControl_alsa.Po
+#	$(AM_V_CC)source='./soundControl_alsa.c' object='./xplayerdemo-soundControl_alsa.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-soundControl_alsa.obj `if test -f './soundControl_alsa.c'; then $(CYGPATH_W) './soundControl_alsa.c'; else $(CYGPATH_W) '$(srcdir)/./soundControl_alsa.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

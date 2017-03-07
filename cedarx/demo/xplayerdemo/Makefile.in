@@ -98,7 +98,8 @@ am_xplayerdemo_OBJECTS = ./xplayerdemo-xplayerdemo.$(OBJEXT) \
 	./xplayerdemo-soundControl_null.$(OBJEXT) \
 	./xplayerdemo-subtitleControl_null.$(OBJEXT) \
 	./xplayerdemo-deinterlace_null.$(OBJEXT) \
-	./xplayerdemo-layerControl_de.$(OBJEXT)
+	./xplayerdemo-layerControl_de.$(OBJEXT) \
+	./xplayerdemo-soundControl_alsa.$(OBJEXT)
 xplayerdemo_OBJECTS = $(am_xplayerdemo_OBJECTS)
 xplayerdemo_DEPENDENCIES =  \
 	$(top_srcdir)/libcore/parser/base/libcdx_parser.la \
@@ -321,9 +322,9 @@ xplayerdemo_SOURCES = ./xplayerdemo.c \
 			./soundControl_null.c \
 			./subtitleControl_null.c \
 			./deinterlace_null.c \
-			./layerControl_de.c
+			./layerControl_de.c \
+            ./soundControl_alsa.c
 
-#./soundControl_alsa.c
 xplayerdemo_CFLAGS = $(CFLAGS_CDXG) $(LOCAL_INCLUDE)
 #xplayerdemo_CPPFLAGS = $(CPPFLAGS_CDXG)
 LOCAL_INCLUDE = -I$(top_srcdir) \
@@ -347,7 +348,7 @@ xplayerdemo_LDADD = $(top_srcdir)/libcore/parser/base/libcdx_parser.la \
 			$(top_srcdir)/xplayer/libxplayer.la \
 			$(top_srcdir)/libcore/common/libcdx_common.la
 
-LOCAL_LIB = -dl -lpthread -lz -lm -lcdc_vdecoder -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
+LOCAL_LIB = -dl -lpthread -lz -lm -lcdc_vdecoder -lasound -ladecoder -lm -lcdc_sdecoder -lcdc_ve \
 		-lcrypto -lcdc_memory -lcdc_base -lssl
 
 all: all-am
@@ -452,6 +453,8 @@ $(DEPDIR)/$(am__dirstamp):
 	$(DEPDIR)/$(am__dirstamp)
 ./xplayerdemo-layerControl_de.$(OBJEXT): ./$(am__dirstamp) \
 	$(DEPDIR)/$(am__dirstamp)
+./xplayerdemo-soundControl_alsa.$(OBJEXT): ./$(am__dirstamp) \
+	$(DEPDIR)/$(am__dirstamp)
 
 xplayerdemo$(EXEEXT): $(xplayerdemo_OBJECTS) $(xplayerdemo_DEPENDENCIES) $(EXTRA_xplayerdemo_DEPENDENCIES) 
 	@rm -f xplayerdemo$(EXEEXT)
@@ -467,6 +470,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-deinterlace_null.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-layerControl_de.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-layerControl_null.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-soundControl_alsa.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-soundControl_null.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-subtitleControl_null.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xplayerdemo-xplayerdemo.Po@am__quote@
@@ -578,6 +582,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='./layerControl_de.c' object='./xplayerdemo-layerControl_de.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-layerControl_de.obj `if test -f './layerControl_de.c'; then $(CYGPATH_W) './layerControl_de.c'; else $(CYGPATH_W) '$(srcdir)/./layerControl_de.c'; fi`
+
+./xplayerdemo-soundControl_alsa.o: ./soundControl_alsa.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -MT ./xplayerdemo-soundControl_alsa.o -MD -MP -MF $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo -c -o ./xplayerdemo-soundControl_alsa.o `test -f './soundControl_alsa.c' || echo '$(srcdir)/'`./soundControl_alsa.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo $(DEPDIR)/xplayerdemo-soundControl_alsa.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='./soundControl_alsa.c' object='./xplayerdemo-soundControl_alsa.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-soundControl_alsa.o `test -f './soundControl_alsa.c' || echo '$(srcdir)/'`./soundControl_alsa.c
+
+./xplayerdemo-soundControl_alsa.obj: ./soundControl_alsa.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -MT ./xplayerdemo-soundControl_alsa.obj -MD -MP -MF $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo -c -o ./xplayerdemo-soundControl_alsa.obj `if test -f './soundControl_alsa.c'; then $(CYGPATH_W) './soundControl_alsa.c'; else $(CYGPATH_W) '$(srcdir)/./soundControl_alsa.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/xplayerdemo-soundControl_alsa.Tpo $(DEPDIR)/xplayerdemo-soundControl_alsa.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='./soundControl_alsa.c' object='./xplayerdemo-soundControl_alsa.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(xplayerdemo_CFLAGS) $(CFLAGS) -c -o ./xplayerdemo-soundControl_alsa.obj `if test -f './soundControl_alsa.c'; then $(CYGPATH_W) './soundControl_alsa.c'; else $(CYGPATH_W) '$(srcdir)/./soundControl_alsa.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

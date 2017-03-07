@@ -8,8 +8,7 @@ xplayerdemo_SOURCES =  ./xplayerdemo.c \
 			./soundControl_null.c \
 			./subtitleControl_null.c \
 			./deinterlace_null.c \
-			./layerControl_de.c \
-            ./soundControl_alsa.c
+			./layerControl_de.c 
 
 xplayerdemo_CFLAGS = $(CFLAGS_CDXG)
 #xplayerdemo_CPPFLAGS = $(CPPFLAGS_CDXG)
