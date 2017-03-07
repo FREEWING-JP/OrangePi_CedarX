@@ -751,6 +751,8 @@ static int __GetCachedTime(SoundCtrl* s)
     {
         return 0;
     }
+#else
+    return 0;
 #endif
 
 }
