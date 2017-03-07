@@ -33,7 +33,7 @@ extern SoundCtrl* SoundDeviceCreate();
 extern SubCtrl* SubtitleCreate();
 extern Deinterlace* DeinterlaceCreate();
 extern LayerCtrl* LayerCreate_DE();
-//extern SoundCtrl* SoundDeviceCreate_Alsa();
+extern SoundCtrl* SoundDeviceCreate_Alsa();
 
 static const int STATUS_STOPPED   = 0;
 static const int STATUS_PREPARING = 1;
@@ -459,8 +459,8 @@ int main(int argc, char** argv)
 
     //LayerCtrl* layer = LayerCreate();
     LayerCtrl* layer = LayerCreate_DE();
-    SoundCtrl* sound = SoundDeviceCreate();
-//    SoundCtrl* sound = SoundDeviceCreate_Alsa();
+//    SoundCtrl* sound = SoundDeviceCreate();
+    SoundCtrl* sound = SoundDeviceCreate_Alsa();
     SubCtrl*   sub   = SubtitleCreate();
     Deinterlace* di = DeinterlaceCreate();
 

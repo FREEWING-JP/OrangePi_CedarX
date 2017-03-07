@@ -136,7 +136,7 @@ static void __Release(SoundCtrl* s)
     return;
 }
 
-#if 1
+#if 0
 static void __SetFormat(SoundCtrl* s, unsigned int nSampleRate, unsigned int nChannelNum)
 {
     int               ret;
@@ -762,7 +762,7 @@ static SoundControlOpsT mSoundControlOps =
     .getFrameCount =         __GetFrameCount,
 };
 
-SoundCtrl* SoundDeviceCreate()
+SoundCtrl* SoundDeviceCreate_Alsa()
 {
     SoundCtrlContext* s;
     logd("==   SoundDeviceInit");
