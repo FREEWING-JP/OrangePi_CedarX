@@ -83,8 +83,9 @@ static int try_open_device(SoundCtrlContext* sc, const char *device, int open_mo
 {
 #ifndef ORAGEPI_DEBUG
     int err;
-
+    
     err = snd_pcm_open(&sc->alsa_handler, device, SND_PCM_STREAM_PLAYBACK,
+                       open_mode);
     return err;
 #endif
     return 0;
