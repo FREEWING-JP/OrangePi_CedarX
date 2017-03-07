@@ -19,6 +19,8 @@
 #include <pthread.h>
 
 #include <alsa/asoundlib.h>
+#define ORANGEPI_DEBUG
+
 
 enum SDSTATUS
 {
@@ -79,11 +81,12 @@ typedef struct strarg_s
 
 static int try_open_device(SoundCtrlContext* sc, const char *device, int open_mode, int try_ac3)
 {
+#ifndef ORAGEPI_DEBUG
     int err;
 
     err = snd_pcm_open(&sc->alsa_handler, device, SND_PCM_STREAM_PLAYBACK,
-                       open_mode);
     return err;
+#endif
 }
 
 static void parse_device(char *dest, const char *src, int len)
@@ -101,6 +104,7 @@ static int SoundDeviceStop_l(SoundCtrlContext* sc);
 
 static void __Release(SoundCtrl* s)
 {
+#ifndef ORANGEPI_DEBUG
     int               ret;
     SoundCtrlContext* sc;
 
@@ -133,6 +137,7 @@ static void __Release(SoundCtrl* s)
     free(sc);
     sc = NULL;
 
+#endif
     return;
 }
 
@@ -189,6 +194,7 @@ static void __SetFormat(SoundCtrl* s, CdxPlaybkCfg *cfg)
 
 static int __Start(SoundCtrl* s)
 {
+#ifndef ORANGEPI_DEBUG
     int               ret;
     SoundCtrlContext* sc;
 
@@ -312,7 +318,6 @@ static int __Start(SoundCtrl* s)
                     return 0;
                 }
             }
-
             if ((err = snd_pcm_nonblock(sc->alsa_handler, 0)) < 0)
             {
                 logw("MSGTR_AO_ALSA_ErrorSetBlockMode");
@@ -384,7 +389,6 @@ static int __Start(SoundCtrl* s)
             sc->bytes_per_sample = snd_pcm_format_physical_width(sc->alsa_format) / 8;
             sc->bytes_per_sample *= pcm_params.channels;
             pcm_params.bps = pcm_params.samplerate * sc->bytes_per_sample;
-
 #ifdef BUFFERTIME
             {
                 int alsa_buffer_time = 500000; /* original 60 */
@@ -548,7 +552,7 @@ static int __Start(SoundCtrl* s)
 
     sc->eStatus = SD_STATUS_STARTED;
     pthread_mutex_unlock(&sc->mutex);
-
+#endif
     return 0;
 }
 
@@ -568,6 +572,7 @@ static int __Stop(SoundCtrl* s)
 
 static int SoundDeviceStop_l(SoundCtrlContext* sc)
 {
+#ifndef ORANGEPI_DEBUG
     int err = 0;
 
     if(sc->eStatus == SD_STATUS_STOPPED)
@@ -609,11 +614,13 @@ static int SoundDeviceStop_l(SoundCtrlContext* sc)
 
         sc->eStatus = SD_STATUS_STOPPED;
     }
+#endif
     return err;
 }
 
 static int __Pause(SoundCtrl* s)
 {
+#ifndef ORANGEPI_DEBUG
     int               ret;
     SoundCtrlContext* sc;
 
@@ -640,13 +647,14 @@ static int __Pause(SoundCtrl* s)
     }
 
     sc->eStatus = SD_STATUS_PAUSED;
-
+#endif
     return 0;
 }
 
 
 static int __Write(SoundCtrl* s, void* pData, int nDataSize)
 {
+#ifndef ORANGEPI_DEBUG
     int               ret;
     SoundCtrlContext* sc;
 
@@ -699,6 +707,7 @@ static int __Write(SoundCtrl* s, void* pData, int nDataSize)
     while (res == 0);
 
     return res < 0 ? res : res * sc->bytes_per_sample;
+#endif
 }
 
 
@@ -711,6 +720,7 @@ static int __Reset(SoundCtrl* s)
 
 static int __GetCachedTime(SoundCtrl* s)
 {
+#ifndef ORANGEPI_DEBUG
     int               ret;
     SoundCtrlContext* sc;
 
@@ -737,6 +747,7 @@ static int __GetCachedTime(SoundCtrl* s)
     {
         return 0;
     }
+#endif
 
 }
 
